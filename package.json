@@ -1,7 +1,7 @@
 {
   "name": "raw-sha-links",
-  "version": "0.0.0",
-  "description": "",
+  "version": "0.0.0-dev",
+  "description": "Block format limited to storing a list of sha2 hashed links to `raw` binary blocks.",
   "main": "index.js",
   "scripts": {
     "test": "nyc --check-coverage --branches 100 --functions 100 --lines 100 aegir test -t node browser",
@@ -17,5 +17,16 @@
   },
   "dependencies": {
     "bytesish": "^0.2.0"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikeal/raw-sha-links.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mikeal/raw-sha-links/issues"
+  },
+  "homepage": "https://github.com/mikeal/raw-sha-links#readme"
 }

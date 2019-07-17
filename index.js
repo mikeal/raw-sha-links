@@ -11,6 +11,11 @@ const sizeTable = {
   48: 1,
   64: 2
 }
+
+const algoToSize = algo => parseInt(algo.toString().replace(/\D/g, '')) / 8
+
+const max = (size, algo = 256) => Math.floor((size / algoToSize(algo)) - 1)
+
 const predict = (length, hashLength) => ((length * hashLength) + 1)
 
 const encode = hashes => {
@@ -48,3 +53,5 @@ const decode = block => {
 
 exports.encode = encode
 exports.decode = decode
+exports.max = max
+exports.size = (length, algo = 256) => predict(length, algoToSize(algo))

@@ -45,6 +45,18 @@ test('alternate sizes', async () => {
   validate(values, _values)
 })
 
+test('max and size', done => {
+  let length = rsl.max(1e+6)
+  same(length, 31249)
+  length = rsl.max(1e+6, 512)
+  same(length, 15624)
+  let size = rsl.size(31249)
+  same(size, (31249 * 32) + 1)
+  size = rsl.size(15624, 512)
+  same(size, (15624 * 64) + 1)
+  done()
+})
+
 /* Errors */
 
 const errorTest = (name, fn, message) => {
