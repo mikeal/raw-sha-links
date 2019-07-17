@@ -47,6 +47,6 @@ Returns the block size for a block containing `length` number of links.
 For working with binary data you may want to use [`bytesish`](https://github.com/mikeal/bytesish), 
 especially if you're going to be copying or string encoding the `DataView` instances from `decode()`.
 
-For creating digest hashes in the you may want to use [`digestish`](https://github.com/mikeal/digestish). 
+For creating digest hashes in the you may want to use [`digestif`](https://github.com/mikeal/digestif). 
 It has an incredibly small bundle size and works in Browsers and Node.js and will return you an Promise
 for an ArrayBuffer on both platforms which is what `raw-sha-links` expects.

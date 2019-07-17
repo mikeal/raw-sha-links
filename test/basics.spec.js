@@ -1,7 +1,7 @@
 'use strict'
 const rsl = require('../')
 const bytes = require('bytesish')
-const digest = require('digestish')
+const digest = require('digestif')
 const assert = require('assert')
 const tsame = require('tsame')
 const { it } = require('mocha')

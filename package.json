@@ -12,7 +12,7 @@
   "license": "(Apache-2.0 AND MIT)",
   "devDependencies": {
     "aegir": "^20.0.0",
-    "digestish": "0.0.4",
+    "digestif": "0.0.0",
     "tsame": "^2.0.1"
   },
   "dependencies": {
