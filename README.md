@@ -6,7 +6,7 @@ This is a **very** restricted block format. It is limited to representing:
 
 * A single list of hashes.
 * All hashes must link to `raw` blocks 
-(does not support other [multicodecs](https://github.com/multiformats/multicodec).
+(does not support other [multicodecs](https://github.com/multiformats/multicodec)).
 * All hashes must use sha2 encoding (256, 364 or 512).
 * All hashes must be the same length, not mixing and matching.
 
