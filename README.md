@@ -8,10 +8,10 @@ This is a **very** restricted block format. It is limited to representing:
 * All hashes must link to `raw` blocks 
 (does not support other [multicodecs](https://github.com/multiformats/multicodec)).
 * All hashes must use sha2 encoding (256, 364 or 512).
-* All hashes must be the same length, not mixing and matching.
+* All hashes must be the same length, no mixing and matching hashes of different lengths.
 
 This may seem like a very narrow case but it's actually quite common to create new lists of 
-links to hashes binary blocks. 
+links to hashed binary blocks. 
 
 By restricting to only SHA hashes we ensure that the block encoder/decoder can be implemented
 as a very small JavaScript library using only the available hashing functions in 
