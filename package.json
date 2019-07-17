@@ -4,15 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "nyc --check-coverage --branches 100 --functions 100 --lines 100 aegir test -t node browser",
+    "pretest": "aegir lint"
   },
   "keywords": [],
   "author": "Mikeal Rogers <mikeal.rogers@gmail.com> (https://www.mikealrogers.com/)",
   "license": "(Apache-2.0 AND MIT)",
   "devDependencies": {
-    "aegir": "^20.0.0"
+    "aegir": "^20.0.0",
+    "digestish": "0.0.4",
+    "tsame": "^2.0.1"
   },
   "dependencies": {
-    "bytesish": "^0.1.0"
+    "bytesish": "^0.2.0"
   }
 }

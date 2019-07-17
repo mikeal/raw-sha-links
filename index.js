@@ -1,17 +1,16 @@
 'use strict'
 const bytes = require('bytesish')
 
-const sizeTable = {
-  256: 0,
-  364: 1,
-  512: 2
-}
 const tableSize = {
-  0: 256,
-  364: 1,
-  512: 2
+  0: 256 / 8,
+  1: 384 / 8,
+  2: 512 / 8
 }
-
+const sizeTable = {
+  32: 0,
+  48: 1,
+  64: 2
+}
 const predict = (length, hashLength) => ((length * hashLength) + 1)
 
 const encode = hashes => {

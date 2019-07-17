@@ -1,0 +1,66 @@
+'use strict'
+const rsl = require('../')
+const bytes = require('bytesish')
+const digest = require('digestish')
+const assert = require('assert')
+const tsame = require('tsame')
+const { it } = require('mocha')
+
+const test = it
+
+const same = (x, y) => assert.ok(tsame(x, y))
+
+const validate = (a, b) => {
+  assert(a.length === b.length)
+  a.forEach((hash, i) => {
+    same(bytes.arrayBuffer(hash), bytes.arrayBuffer(b[i]))
+  })
+}
+
+test('encode and decode', async () => {
+  const hash = await digest('hello world')
+  const values = [hash, hash, hash]
+  const block = rsl.encode(values)
+  const _values = rsl.decode(block)
+  validate(values, _values)
+})
+
+test('decode view', async () => {
+  const hash = await digest('hello world')
+  const values = [hash, hash, hash]
+  const block = rsl.encode(values)
+  const _values = rsl.decode(bytes(block))
+  validate(values, _values)
+})
+
+test('alternate sizes', async () => {
+  let values = await Promise.all([1, 2, 3].map(i => digest('hello' + i, 'SHA-512')))
+  let block = rsl.encode(values)
+  let _values = rsl.decode(bytes(block))
+  validate(values, _values)
+
+  values = await Promise.all([1, 2, 3].map(i => digest('hello' + i, 'SHA-384')))
+  block = rsl.encode(values)
+  _values = rsl.decode(bytes(block))
+  validate(values, _values)
+})
+
+/* Errors */
+
+const errorTest = (name, fn, message) => {
+  test(name, async () => {
+    try {
+      await fn()
+      throw new Error('Succeeded when it should have failed')
+    } catch (e) {
+      same(e.message, message)
+    }
+  })
+}
+
+errorTest('empty list', () => rsl.encode([]), 'Cannot encode empty List')
+errorTest('unsupported hash encode', () => rsl.encode([bytes.arrayBuffer('nope')]), 'Unsupported hash size')
+errorTest('variable hash sizes', async () => {
+  rsl.encode(await Promise.all([digest('hello'), digest('hello', 'SHA-512')]))
+}, 'Cannot encode variable hash sizes')
+errorTest('unsupported hash decode', () => rsl.decode(bytes('nope')), 'Unknown hash length')
