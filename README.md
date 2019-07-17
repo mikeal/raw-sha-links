@@ -24,15 +24,23 @@ And finally, by requiring a unified length we have the smallest possible block f
 this kind of data **and** we can always predict the block size required to store any number of 
 link values.
 
-## `encode(values)`
+## `rsl.encode(values)`
 
 Encode an array of `values` into a new block. Every value must be an ArrayBuffer of equal length.
 
-## `decode(binary[, stringEncoding])`
+## `rsl.decode(binary[, stringEncoding])`
 
 Accepts any binary type, binary view, or string. Base64 encoded strings are supported using `decode(string, 'base64')`.
 
 Returns an array of `DataView` instances for every hash.
+
+## `rsl.max(size[, algo='SHA-256'])`
+
+Returns the max number of hashes that can be contained in the target size.
+
+## `rsl.size(length[, algo='SHA-256'])`
+
+Returns the block size for a block containing `length` number of links.
 
 ## Related Libraries
 
