@@ -57,6 +57,13 @@ test('max and size', done => {
   done()
 })
 
+test('empty list', done => {
+  const block = rsl.encode([])
+  const empty = rsl.decode(block)
+  same(empty, [])
+  done()
+})
+
 /* Errors */
 
 const errorTest = (name, fn, message) => {
@@ -70,7 +77,6 @@ const errorTest = (name, fn, message) => {
   })
 }
 
-errorTest('empty list', () => rsl.encode([]), 'Cannot encode empty List')
 errorTest('unsupported hash encode', () => rsl.encode([bytes.arrayBuffer('nope')]), 'Unsupported hash size')
 errorTest('variable hash sizes', async () => {
   rsl.encode(await Promise.all([digest('hello'), digest('hello', 'SHA-512')]))

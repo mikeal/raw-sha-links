@@ -18,8 +18,10 @@ const max = (size, algo = 256) => Math.floor((size / algoToSize(algo)) - 1)
 
 const predict = (length, hashLength) => ((length * hashLength) + 1)
 
+const empty = new Uint8Array(8)
+
 const encode = hashes => {
-  if (!hashes.length) throw new Error('Cannot encode empty List')
+  if (!hashes.length) return empty.buffer
   const len = hashes[0].byteLength
   if (typeof sizeTable[len] === 'undefined') throw new Error('Unsupported hash size')
   hashes.forEach(h => {
@@ -42,6 +44,7 @@ const decode = block => {
   const view = bytes(block)
   const hashLength = tableSize[view.getUint8(0)]
   if (typeof hashLength === 'undefined') throw new Error('Unknown hash length')
+  if (view.byteLength === 8) return [] // empty list
   const valueLength = (view.byteLength - 1) / hashLength
   const values = []
   for (let i = 0; i < valueLength; i++) {
