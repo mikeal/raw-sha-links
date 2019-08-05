@@ -65,6 +65,17 @@ test('max and size', done => {
   done()
 })
 
+test('size tables', done => {
+  same(rsl.tableSize[0], 32)
+  same(rsl.tableSize[1], 48)
+  same(rsl.tableSize[2], 64)
+
+  same(rsl.sizeTable[32], 0)
+  same(rsl.sizeTable[48], 1)
+  same(rsl.sizeTable[64], 2)
+  done()
+})
+
 test('empty list', done => {
   const block = rsl.encode([])
   const empty = rsl.decode(block)

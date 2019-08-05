@@ -57,3 +57,6 @@ exports.encode = encode
 exports.decode = decode
 exports.max = max
 exports.size = (length, algo = 256) => predict(length, algoToSize(algo))
+
+exports.tableSize = tableSize
+exports.sizeTable = sizeTable
