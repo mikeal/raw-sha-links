@@ -34,8 +34,7 @@ const encode = hashes => {
   for (let i = 0; i < hashes.length; i++) {
     const hash = hashes[i]
     const offset = (i * len) + 1
-    const view = new Uint8Array(block.buffer, offset)
-    view.set(new Uint8Array(hash))
+    block.set(bytes.typedArray(hash), offset)
   }
   return block.buffer
 }

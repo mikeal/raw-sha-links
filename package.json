@@ -16,7 +16,7 @@
     "tsame": "^2.0.1"
   },
   "dependencies": {
-    "bytesish": "^0.2.0"
+    "bytesish": "^0.3.1"
   },
   "directories": {
     "test": "test"

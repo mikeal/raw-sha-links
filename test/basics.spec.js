@@ -25,6 +25,14 @@ test('encode and decode', async () => {
   validate(values, _values)
 })
 
+test('detailed encode and decode', async () => {
+  const hashes = await Promise.all(['v1', 'v2', 'v3'].map(s => digest(bytes(s))))
+  const block = rsl.encode(hashes)
+  const values = rsl.decode(block)
+  const b64 = arr => arr.map(a => bytes.toString(a, 'base64'))
+  same(b64(hashes), b64(values))
+})
+
 test('decode view', async () => {
   const hash = await digest('hello world')
   const values = [hash, hash, hash]
