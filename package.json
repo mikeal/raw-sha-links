@@ -4,7 +4,7 @@
   "description": "Block format limited to storing a list of sha2 hashed links to `raw` binary blocks.",
   "main": "index.js",
   "scripts": {
-    "test": "nyc --check-coverage --branches 100 --functions 100 --lines 100 aegir test -t node browser",
+    "test": "hundreds aegir test -t node browser",
     "pretest": "aegir lint"
   },
   "keywords": [],
@@ -13,6 +13,7 @@
   "devDependencies": {
     "aegir": "^20.0.0",
     "digestif": "0.0.0",
+    "hundreds": "0.0.1",
     "tsame": "^2.0.1"
   },
   "dependencies": {
