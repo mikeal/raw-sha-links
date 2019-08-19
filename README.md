@@ -1,5 +1,7 @@
 # raw-sha-links
 
+![5845](https://img.shields.io/badge/compiled%20bundle-6k-green) ![2273](https://img.shields.io/badge/gzipped%20bundle-2k-brightgreen)
+
 Block format limited to storing a list of sha2 hashed links to `raw` binary blocks.
 
 This is a **very** restricted block format. It is limited to representing:
